@@ -58,6 +58,7 @@ body {
 
 #container .box .box-inner .box-front,
 #container .box .box-inner .box-back {
+	transform: rotateY(0deg);
 	width: 100%;
 	height: 100%;
 	backface-visibility: hidden;
