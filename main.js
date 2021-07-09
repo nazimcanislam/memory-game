@@ -82,12 +82,21 @@ allCards.forEach((card, index) => {
 			if (!card.classList.contains('done')) {
 				card.classList.toggle('flip');
 
+				console.log(firstSelected, secondSelected);
+
 				if (firstSelected == null) {
 					firstSelected = card;
+					console.log('Hi');
 				} else {
 					if (firstSelected != null && secondSelected == null) {
 						secondSelected = card;
 					}
+				}
+
+				// This block fixed the error that occurred when the 1st card was selected for the 2nd time.
+				if (firstSelected == secondSelected) {
+					firstSelected = null;
+					secondSelected = null;
 				}
 
 				if (firstSelected != null && secondSelected != null) {
