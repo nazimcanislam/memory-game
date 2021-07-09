@@ -94,7 +94,7 @@ allCards.forEach((card, index) => {
 				}
 
 				// This block fixed the error that occurred when the 1st card was selected for the 2nd time.
-				if (firstSelected == secondSelected) {
+				if (firstSelected === secondSelected) {
 					firstSelected = null;
 					secondSelected = null;
 				}
