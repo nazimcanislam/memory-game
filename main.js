@@ -16,6 +16,8 @@ const symbols = {
 	'google': ['fab fa-google', '#e74c3c']
 }
 
+let foundCounter = 0;
+
 // Since this is a memory game with matching one, two cards, double the card symbols and mix them in the list.
 let cardNames = [];
 for (let i = 0; i < 2; i++) {
@@ -30,19 +32,6 @@ cardNames = cardNames.sort(() => Math.random() - 0.5);
 // Finally, delete any unused variables.
 let index = 0;
 for (let i = 0; i < 12; i++) {
-	/* Example
-	<div class="box">
-		<div class="box-inner">
-			<div class="box-front">
-				<i class="fas fa-heart"></i>
-			</div>
-			<div class="box-back">
-				<i class="fas fa-question"></i>
-			</div>
-		</div>
-	</div>
-	*/
-
 	let boxNode = document.createElement('div');
 	let boxInnerNode = document.createElement('div');
 	let boxFrontNode = document.createElement('div');
@@ -86,7 +75,6 @@ allCards.forEach((card, index) => {
 
 				if (firstSelected == null) {
 					firstSelected = card;
-					console.log('Hi');
 				} else {
 					if (firstSelected != null && secondSelected == null) {
 						secondSelected = card;
@@ -109,6 +97,16 @@ allCards.forEach((card, index) => {
 						secondSelected = null;
 
 						playable = true;
+
+						foundCounter++;
+						if (foundCounter == Object.keys(symbols).length) {
+							setTimeout(function () {
+								let playAgain = window.confirm("You have win! Play again?");
+								if (playAgain) {
+									location.reload();
+								}
+							}, 1000);
+						}
 					} else {
 						setTimeout(() => {
 							firstSelected.classList.toggle('flip');
